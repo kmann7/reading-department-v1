@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reading Department — Library</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="library">
+
+  <aside class="sidebar sidebar-blue">
+    <a class="brand" href="index.html" aria-label="Reading Department home">
+      <span>READING</span>
+      <span>DEPARTMENT&reg;</span>
+      <small>PERSONAL ARCHIVE</small>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a class="nav-link" data-nav="home" href="index.html"><span>01</span> HOME</a>
+      <a class="nav-link" data-nav="library" href="library.html"><span>02</span> LIBRARY</a>
+      <a class="nav-link" data-nav="goals" href="goals.html"><span>03</span> GOALS</a>
+    </nav>
+
+    <div class="sidebar-section">
+      <p class="eyebrow">ARCHIVE</p>
+      <div id="sidebarYears" class="year-links"></div>
+    </div>
+
+    <button class="button button-black sidebar-add" type="button" data-open-add>+ ADD BOOK</button>
+    <button class="utility-link" type="button" data-open-utility>UTILITY ↗</button>
+
+    <div class="sidebar-footer">
+      <span id="todayLabel"></span>
+      <span>RD—LOCAL</span>
+    </div>
+  </aside>
+
+  <header class="mobile-header mobile-header-blue">
+    <a class="mobile-brand" href="index.html">RD&reg;</a>
+    <button class="button button-black" type="button" data-open-add>+ BOOK</button>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a data-nav="home" href="index.html">HOME</a>
+    <a data-nav="library" href="library.html">LIBRARY</a>
+    <a data-nav="goals" href="goals.html">GOALS</a>
+    <button type="button" data-open-utility>UTILITY</button>
+  </nav>
+
+  <main class="page-shell">
+    <section class="library-masthead">
+      <div class="library-label-row">
+        <span>READING ARCHIVE</span>
+        <div class="library-summary">
+          <strong id="libraryBookCount">0</strong><span>BOOKS</span>
+          <strong id="libraryPageCount">0</strong><span>PAGES</span>
+        </div>
+      </div>
+
+      <h1 id="libraryYearTitle">ALL YEARS</h1>
+
+      <div id="libraryYearTabs" class="year-tabs"></div>
+    </section>
+
+    <section class="library-tools">
+      <div class="tool-row tool-row-primary">
+        <label class="search-box">
+          <span>SEARCH</span>
+          <input id="librarySearch" type="search" placeholder="TITLE OR AUTHOR">
+        </label>
+
+        <div class="filter-button-group" aria-label="Status filter">
+          <span>STATUS</span>
+          <div>
+            <button type="button" class="filter-button active" data-status-filter="all">ALL</button>
+            <button type="button" class="filter-button" data-status-filter="reading">READING</button>
+            <button type="button" class="filter-button" data-status-filter="finished">FINISHED</button>
+            <button type="button" class="filter-button" data-status-filter="dnf">DNF</button>
+            <button type="button" class="filter-button" data-status-filter="want-to-read">WANT</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-row tool-row-secondary">
+        <div class="filter-button-group" aria-label="Verdict filter">
+          <span>VERDICT</span>
+          <div>
+            <button type="button" class="filter-button active" data-verdict-filter="all">ALL</button>
+            <button type="button" class="filter-button" data-verdict-filter="yah">YAH</button>
+            <button type="button" class="filter-button" data-verdict-filter="meh">MEH</button>
+            <button type="button" class="filter-button" data-verdict-filter="nah">NAH</button>
+          </div>
+        </div>
+
+        <label class="genre-tool">
+          <span>GENRE</span>
+          <select id="genreFilter">
+            <option value="all">ALL GENRES</option>
+          </select>
+        </label>
+
+        <div class="library-action-group">
+          <button id="sortMenuButton" class="text-button" type="button">SORT ↗</button>
+
+          <div class="view-switch">
+            <button id="archiveViewBtn" class="view-button active" type="button">ARCHIVE</button>
+            <button id="indexViewBtn" class="view-button" type="button">INDEX</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="sortMenu" class="sort-menu hidden" aria-label="Sort options">
+        <button type="button" data-sort="reading-order">01 READING ORDER</button>
+        <button type="button" data-sort="finished-desc">02 RECENTLY FINISHED</button>
+        <button type="button" data-sort="title-asc">03 TITLE A-Z</button>
+        <button type="button" data-sort="author-asc">04 AUTHOR A-Z</button>
+        <button type="button" data-sort="pages-desc">05 LONGEST FIRST</button>
+        <button type="button" data-sort="added-desc">06 RECENTLY ADDED</button>
+      </div>
+    </section>
+
+    <section id="libraryArchive" class="library-archive"></section>
+
+    <section id="libraryIndex" class="library-index hidden">
+      <div class="index-head">
+        <span>N°</span>
+        <span>TITLE</span>
+        <span>AUTHOR</span>
+        <span>GENRE</span>
+        <span>PP.</span>
+        <span>VERDICT</span>
+      </div>
+
+      <div id="libraryIndexRows"></div>
+    </section>
+
+    <section id="libraryEmpty" class="empty-state hidden">
+      <span>NO MATCHES</span>
+      <h2>Nothing here yet.</h2>
+      <button class="button button-blue" type="button" data-open-add>+ ADD BOOK</button>
+    </section>
+  </main>
+
+  <div id="appLayer"></div>
+  <script src="app.js"></script>
+</body>
+</html>
